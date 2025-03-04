@@ -1,0 +1,1 @@
+# Simple compilation of one cs file to exe
