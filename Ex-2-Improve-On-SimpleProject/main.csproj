@@ -1,0 +1,44 @@
+<Project 
+    DefaultTargets="Compile" 
+    xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
+>
+    <PropertyGroup>
+        <TargetFrameworkVersion>v4.0</TargetFrameworkVersion> <!-- Specifies versiohn of .net fwk -->
+        <OutputType>Exe</OutputType> <!-- will tell Csc command the type of binary to compile to -->
+        <OutputPath>bin\</OutputPath> <!-- directory to compile to -->
+        <AssemblyName>SimpleProject</AssemblyName>
+    </PropertyGroup>
+
+    <!-- collection of files to compile -->
+    <ItemGroup>
+        <Compile Include="main.cs" />
+    </ItemGroup>
+
+    <Target Name="CreateOutputDirectory" BeforeTargets="Compile">
+        <!-- 
+            Create the bin directory if it does not exist.
+            The MakeDir task is used to create directories.
+        -->
+        <MakeDir Directories="$(OutputPath)" />
+    </Target>
+
+    <Target Name="Clean" BeforeTargets="CreateOutputDirectory">
+        <!-- 
+            Delete the bin directory and all its contents.
+            The RemoveDir task is used to delete directories.
+        -->
+        <RemoveDir Directories="$(OutputPath)" />
+    </Target>
+
+    <Target Name="Compile">
+        <!-- 
+            Csc command to compile the files in the Compile collection.
+            Notice that @(Compile) item group is parsed as "item1.cs;item2.cs;..."
+        -->
+        <Csc 
+            Sources="@(Compile)"
+            TargetType="$(OutputType)"
+            OutputAssembly="$(OutputPath)$(AssemblyName).exe"
+        />
+    </Target>
+</Project>
