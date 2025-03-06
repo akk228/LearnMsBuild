@@ -1,0 +1,31 @@
+<Project 
+    DefaultTargets="Build" 
+    xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
+>
+    <PropertyGroup>
+        <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+        <OutputType>Exe</OutputType>
+        <OutputPath>..\bin\</OutputPath>
+        <AssemblyName>SimpleProject</AssemblyName>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Reference Include="..\bin\ClassLib.dll">
+            <!-- <HintPath>..\bin\ClassLib.dll</HintPath> -->
+        </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Include="main.cs" />
+    </ItemGroup>
+
+    <Target Name="Build">
+        <Csc 
+            Sources="@(Compile)"
+            TargetType="$(OutputType)"
+            References="@(Reference)"
+            OutputAssembly="$(OutputPath)$(AssemblyName).exe"
+        />
+    </Target>
+
+</Project>

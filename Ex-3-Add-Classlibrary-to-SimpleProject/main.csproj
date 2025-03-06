@@ -1,0 +1,23 @@
+<Project 
+    DefaultTargets="BuildExe" 
+    xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
+>
+    <PropertyGroup>
+        <OutputPath>bin\</OutputPath>
+    </PropertyGroup>
+    <Target Name="CreateOutputDirectory" BeforeTargets="BuildLib">
+        <MakeDir Directories="$(OutputPath)" />
+    </Target>
+
+    <Target Name="Clean" BeforeTargets="CreateOutputDirectory">
+        <RemoveDir Directories="$(OutputPath)" />
+    </Target>
+
+    <Target Name="BuildLib" DependsOnTargets="Clean">
+        <MSBuild Projects=".\ClassLibProj\classlib.csproj" />
+    </Target>
+
+    <Target Name="BuildExe" DependsOnTargets="BuildLib">
+        <MSBuild Projects=".\ExecutableProject\exe.csproj" />
+    </Target>
+</Project>

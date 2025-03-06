@@ -1,0 +1,34 @@
+<Project 
+    DefaultTargets="Compile" 
+    xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
+>
+    <PropertyGroup>
+        <TargetFrameworkVersion>net48</TargetFrameworkVersion> <!-- Specifies versiohn of .net fwk -->
+        <OutputType>Library</OutputType> <!-- will tell Csc command the type of binary to compile to -->
+        <OutputPath>..\bin\</OutputPath> <!-- directory to compile to -->
+        <AssemblyName>ClassLib</AssemblyName>
+        <RootNamespace>ClassLib</RootNamespace>
+    </PropertyGroup>
+
+        <!-- collection of files to compile -->
+    <ItemGroup>
+        <Compile Include="ClassLib.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Reference Include="System" />
+        <Reference Include="System.Console" />
+    </ItemGroup>
+
+    <Target Name="Compile">
+        <!-- 
+            Csc command to compile the files in the Compile collection.
+            Notice that @(Compile) item group is parsed as "item1.cs;item2.cs;..."
+        -->
+        <Csc 
+            Sources="@(Compile)"
+            TargetType="$(OutputType)"
+            OutputAssembly="$(OutputPath)$(AssemblyName).dll"
+        />
+    </Target>
+</Project>
