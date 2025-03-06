@@ -15,3 +15,5 @@ This reference is provided as a parameter to the c# compiler.
 1. Compile class library to bin
 2. Compile SimpleSolution.exe that references ClassLib.dll from "bin"
  - Notice!, that we have to compile ClassLib.csproj before we start compiling executable
+
+Try runing SimpleProject.exe, adn see what happens
