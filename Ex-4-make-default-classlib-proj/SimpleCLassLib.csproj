@@ -1,0 +1,17 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <!-- <ProjectGuid>{F3A3D3A3-3D3A-3A3D-3A3D-3A3D3A3D3A3D}</ProjectGuid> -->
+        <OutputType>Library</OutputType>
+        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <RootNamespace>SimpleClassLib</RootNamespace>
+        <AssemblyName>SimpleClassLib</AssemblyName>
+        <OutputPath>bin\</OutputPath>
+        <TargetFrameworkVersion>net48</TargetFrameworkVersion>
+        <IntermediateOutputPath>$(OutputPath)obj\</IntermediateOutputPath>
+        <BaseIntermediateOutputPath>$(IntermediateOutputPath)</BaseIntermediateOutputPath>
+    </PropertyGroup>
+    <ItemGroup>
+        <Compile Include="MyClassLib.cs" />
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
