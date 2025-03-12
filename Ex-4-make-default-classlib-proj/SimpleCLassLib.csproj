@@ -6,7 +6,7 @@
         <RootNamespace>SimpleClassLib</RootNamespace>
         <AssemblyName>SimpleClassLib</AssemblyName>
         <OutputPath>bin\</OutputPath>
-        <TargetFrameworkVersion>net48</TargetFrameworkVersion>
+        <TargetFrameworkVersion>v48</TargetFrameworkVersion>
         <IntermediateOutputPath>$(OutputPath)obj\</IntermediateOutputPath>
         <BaseIntermediateOutputPath>$(IntermediateOutputPath)</BaseIntermediateOutputPath>
     </PropertyGroup>
