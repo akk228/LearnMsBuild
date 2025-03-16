@@ -1,0 +1,47 @@
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"
+            Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
+    <PropertyGroup>
+        <!-- <ProjectGuid>{F3A3D3A3-3D3A-3A3D-3A3D-3A3D3A3D3A3D}</ProjectGuid> -->
+        <OutputType>Exe</OutputType>
+        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <OutputPath>bin\</OutputPath>
+        <AssemblyName>SimpleProj</AssemblyName>
+        <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+        <IntermediateOutputPath>$(OutputPath)obj\</IntermediateOutputPath>
+        <BaseIntermediateOutputPath>$(IntermediateOutputPath)</BaseIntermediateOutputPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+            <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="AutoMapper">
+            <HintPath>packages\AutoMapper.10.1.1\lib\net461\AutoMapper.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <!-- <Reference Include="System"/>
+        <Reference Include="System.Core"/>
+        <Reference Include="System.Data"/>
+        <Reference Include="System.Xml"/> -->
+    </ItemGroup>
+
+    <Target Name="PackagesDirectory" BeforeTargets="RestorePackages">
+        <Message Text="Creating packages directory" Importance="high" />
+        <MakeDir Directories="packages" Condition="!Exists('packages')" />
+    </Target>
+
+    <Target Name="RestorePackages" BeforeTargets="PrepareForBuild">
+        <Exec Command="nuget.exe restore packages.config -OutputDirectory packages" />
+    </Target>
+
+    <ItemGroup>
+        <None Include="packages.config" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <Compile Include="main.cs" />
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
